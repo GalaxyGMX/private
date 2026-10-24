@@ -3,270 +3,364 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Für Mommy ❤️</title>
+    <title>Für meine wundervolle Mommyyyy ❤❤️❤️❤️</title>
     <style>
-        /* BASE STYLES & HINTERGRUND */
+        :root {
+            --card-bg: rgba(38, 32, 41, 0.85); /* Leicht transparent für Glaseffekt */
+            --accent-color: #f4acb7;
+            --accent-hover: #ffcad4;
+            --text-color: #ffffff;
+            --text-muted: #e0d0e0;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #ffffff;
-            text-align: center;
-            scroll-behavior: smooth;
-            
-            /* HINTERGRUNDBILD: Ersetze die URL in den Anführungszeichen durch dein Wunschbild */
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                              url('https://i.pinimg.com/736x/25/03/26/250326b34e114f477529983271b4f3cf.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-        }
-
-        /* NAVIGATION BAR */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(8px);
-            padding: 15px 0;
-            z-index: 1000;
-        }
-
-        nav a {
-            color: #ffffff;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: #ffb7c5;
-        }
-
-        /* SEKTIONEN / SEITENBEREICHE */
-        section {
+            /* Süßes Romantik-Hintergrundbild (Herzen/Sterne/Lichter) */
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                        url('https://wallpapercave.com/wp/70naapi.jpg') center/cover no-repeat fixed;
+            color: var(--text-color);
             min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Login Screen */
+        #login-screen {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        #login-screen h2 {
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+
+        #login-screen p {
+            margin-bottom: 20px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(244, 172, 183, 0.4);
+            background: rgba(0,0,0,0.3);
+            color: var(--text-color);
+            font-size: 1rem;
+            margin-bottom: 15px;
+            text-align: center;
+            outline: none;
+        }
+
+        input[type="password"]:focus {
+            border-color: var(--accent-color);
+        }
+
+        button {
+            background-color: var(--accent-color);
+            color: #1a151c;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .error-msg {
+            color: #ff8080;
+            margin-top: 10px;
+            font-size: 0.85rem;
+            display: none;
+        }
+
+        /* Main Content App */
+        #main-app {
+            display: none;
+            width: 100%;
+            max-width: 800px;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            min-height: 520px;
+            flex-direction: column;
+        }
+
+        .header {
+            background: rgba(0, 0, 0, 0.25);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header h1 {
+            color: var(--accent-color);
+            font-size: 1.6rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Navigation Pagination */
+        .nav-tabs {
+            display: flex;
+            overflow-x: auto;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 12px;
+            gap: 8px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-color) transparent;
+        }
+
+        .nav-tab {
+            background: transparent;
+            border: 1px solid rgba(244, 172, 183, 0.3);
+            color: var(--text-muted);
+            padding: 8px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            white-space: nowrap;
+            font-size: 0.85rem;
+            width: auto;
+            transition: all 0.3s;
+        }
+
+        .nav-tab.active, .nav-tab:hover {
+            background: var(--accent-color);
+            color: #1a151c;
+            border-color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* Page Content Area */
+        .content-area {
+            padding: 40px 30px;
+            flex-grow: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 80px 20px 20px 20px;
+            text-align: center;
         }
 
-        .card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 600px;
-            width: 100%;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
         }
 
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
+        .page.active {
+            display: block;
         }
 
-        p {
+        .page h2 {
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .page p {
+            color: var(--text-color);
             font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
+            line-height: 1.7;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        /* NAVIGATION BUTTONS */
-        .btn-group {
-            margin-top: 25px;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Footer navigation controls */
+        .page-controls {
             display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 20px 30px;
+            background: rgba(0, 0, 0, 0.25);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            background-color: #ff6b81;
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: bold;
+        .control-btn {
+            background: transparent;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 8px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: auto;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 107, 129, 0.4);
         }
 
-        .btn:hover {
-            background-color: #ff4757;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 107, 129, 0.6);
+        .control-btn:hover {
+            background: var(--accent-color);
+            color: #1a151c;
+            font-weight: bold;
         }
-
-        /* ANIMIERTES HERZ */
-        .heart {
-            font-size: 50px;
-            color: #ff4757;
-            margin-bottom: 20px;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.15); }
-            100% { transform: scale(1); }
-        }
-		
-		/* PASSWORT OVERLAY STYLES */
-#login-overlay {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    background: rgba(15, 15, 20, 0.95);
-    backdrop-filter: blur(15px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-}
-
-.login-card {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 40px;
-    border-radius: 20px;
-    max-width: 400px;
-    width: 90%;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    text-align: center;
-    color: white;
-}
-
-.login-card input {
-    width: 100%;
-    padding: 12px;
-    margin: 15px 0;
-    border-radius: 25px;
-    border: none;
-    outline: none;
-    text-align: center;
-    font-size: 1rem;
-}
-
-.login-card button {
-    padding: 12px 30px;
-    background-color: #ff6b81;
-    color: white;
-    border: none;
-    border-radius: 25px;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-}
-
-.login-card button:hover {
-    background-color: #ff4757;
-    transform: scale(1.05);
-}
-
-#error-msg {
-    color: #ff4757;
-    margin-top: 10px;
-    font-size: 0.9rem;
-    display: none;
-}
     </style>
 </head>
 <body>
 
-<!-- PASSWORT OVERLAY -->
-<div id="login-overlay">
-    <div class="login-card">
-        <h2>🔒 Nur für dich!</h2>
-        <p style="margin-top: 10px; font-size: 0.9rem;">Gib das Passwort ein, um die Seite zu öffnen:</p>
-        <input type="password" id="password-input" placeholder="Passwort eingeben...">
-        <button onclick="checkPassword()">Öffnen ❤️</button>
-        <div id="error-msg">Falsches Passwort! Versuche es nochmal.</div>
+    <!-- Login Screen -->
+    <div id="login-screen">
+        <h2>Nur für mommyyy ❤️</h2>
+        <p>Was is unser Jubiläumsdatum mommyyy ?? z.B. 18.05.2011</p>
+        <input type="password" id="password-input" placeholder="Antwort eingeben...">
+        <button onclick="checkPassword()">Öffnen</button>
+        <div id="error-msg" class="error-msg">Du schaffst das mommyyy, versuche es ma nochmalll ❤️❤️❤️</div>
     </div>
-</div>
 
-    <nav>
-        <a href="#home">Start</a>
-        <a href="#about">Über Uns</a>
-        <a href="#gallery">Erinnerungen</a>
-        <a href="#message">Nachricht</a>
-    </nav>
+    <!-- Main Application -->
+    <div id="main-app">
+        <div class="header">
+            <h1>Für meine wunderschöne mommyyy ❤️❤️❤️❤️</h1>
+        </div>
 
-    <section id="home">
-        <div class="card">
-            <div class="heart">❤️</div>
-            <h1>Für die beste Mommy auf der Welt</h1>
-            <p>Diese Seite is nur für Mommy gebaut ❤️</p>
-            <div class="btn-group">
-                <a href="#about" class="btn">Mehr erfahren</a>
-                <a href="#message" class="btn">Meine Botschaft</a>
+        <!-- 10 Navigation Tabs -->
+        <div class="nav-tabs" id="nav-tabs">
+            <button class="nav-tab active" onclick="switchPage(0)">1. Willkommen</button>
+            <button class="nav-tab" onclick="switchPage(1)">2. Dein Lächeln</button>
+            <button class="nav-tab" onclick="switchPage(2)">3. Long Distance</button>
+            <button class="nav-tab" onclick="switchPage(3)">4. Deine süße Art</button>
+            <button class="nav-tab" onclick="switchPage(4)">5. Erinnerungen</button>
+            <button class="nav-tab" onclick="switchPage(5)">6. Humor</button>
+            <button class="nav-tab" onclick="switchPage(6)">7. Stolz auf dich</button>
+            <button class="nav-tab" onclick="switchPage(7)">8. Unsere Zukunft</button>
+            <button class="nav-tab" onclick="switchPage(8)">9. Wie sehr ich liebe</button>
+            <button class="nav-tab" onclick="switchPage(9)">10. Für immer</button>
+        </div>
+
+        <!-- Content Pages (10 Pages) -->
+        <div class="content-area">
+            <!-- Page 1 -->
+            <div class="page active" id="page-0">
+                <h2>Hiii Mommyyy</h2>
+                <p>Diese seite habe ich extra nur für dich programmiert mommyy. Egal wie viele Kilometer zwischen uns liegen, du bist immer mein Zuhause, mein Herz und die einzige Grund wrm ich so ein tolles Leben habe. Drück eif auf "Weiter", um auf die nächste Seite zu gehen ❤️❤️❤️❤️❤️ </p>
+            </div>
+            <!-- Page 2 -->
+            <div class="page" id="page-1">
+                <h2>Dein wunderschönes Lächeln</h2>
+                <p>Jedes Mal, wenn du lächelst oder lachst, erhellst du meinen ganzen Tag. Selbst durch einen Bildschirm schaffst du es sofort, mein Herz zum Schmelzen zu bringen.</p>
+            </div>
+            <!-- Page 3 -->
+            <div class="page" id="page-2">
+                <h2>Egal wie weit weg...</h2>
+                <p>Manchmal ist die Distanz verdammt schwer und ich wünschte, ich könnte dich einfach in den Arm nehmen. Aber ich weiß, dass wir beide das locker schaffen, weil das, was wir haben, jede Sekunde wert ist.</p>
+            </div>
+            <!-- Page 4 -->
+            <div class="page" id="page-3">
+                <h2>Deine unfassbar süße Art</h2>
+                <p>Ich liebe es einfach, wie du bist. Deine kleinen Gesten, deine Nachrichten am Morgen und wie du mich jedes Mal zum Lächeln bringst, selbst wenn ich einen stressigen Tag hatte.</p>
+            </div>
+            <!-- Page 5 -->
+            <div class="page" id="page-4">
+                <h2>Unsere gemeinsamen Momente</h2>
+                <p>Jede Minute, die wir zusammen verbringen, ob beim Schreiben, Telefonieren oder Blödsinn reden, gehört zu meinen absoluten Lieblingsmomenten des Tages.</p>
+            </div>
+            <!-- Page 6 -->
+            <div class="page" id="page-5">
+                <h2>Dein Humor & Lachen</h2>
+                <p>Niemand auf der Welt bringt mich so zum Lachen wie du. Wir haben unsere ganz eigenen Insider und teilen eine Verbindung, die absolut einmalig ist.</p>
+            </div>
+            <!-- Page 7 -->
+            <div class="page" id="page-6">
+                <h2>Ich bin so stolz auf dich</h2>
+                <p>Du bist so eine starke, kluge und tolle Person. Ich bewundere, wie du dein Leben meisterst, und ich bin einfach unglaublich stolz, dein Freund zu sein.</p>
+            </div>
+            <!-- Page 8 -->
+            <div class="page" id="page-7">
+                <h2>Unsere gemeinsame Zukunft</h2>
+                <p>Ich freue mich schon so sehr auf all die Tage, an denen die Entfernung endlich Geschichte ist und wir all die Dinge tun können, von denen wir träumen.</p>
+            </div>
+            <!-- Page 9 -->
+            <div class="page" id="page-8">
+                <h2>Wie sehr ich dich liebe</h2>
+                <p>Worte können gar nicht beschreiben, wie viel du mir bedeutest. Du bist mein Fels in der Brandung, mein sicherer Ort und mein größtes Glück auf Erden.</p>
+            </div>
+            <!-- Page 10 -->
+            <div class="page" id="page-9">
+                <h2>Für immer wir ❤️❤️❤️❤️❤️❤️</h2>
+                <p>Danke, dass du in mein Leben getreten bist und es so unendlich viel schöner gemacht hast. Ich liebe dich über alles, heute, morgen und für immer mommyyy ❤️❤️❤️❤️❤️❤️❤️❤️❤️</p>
             </div>
         </div>
-    </section>
 
-    <section id="about">
-        <div class="card">
-            <h1>Über uns</h1>
-            <p>Wir sind am 30.Dezember 2025 zsm geworden und wir daten zsm schon seit über 8 Monate. Wir sind vllt von der Abstand getrennt, aber eines Tages wird das nur noch geschichte sein.</p>
-            <div class="btn-group">
-                <a href="#gallery" class="btn">Zu den Erinnerungen</a>
-            </div>
+        <!-- Next / Prev Controls -->
+        <div class="page-controls">
+            <button class="control-btn" onclick="changePage(-1)">← Zurück</button>
+            <button class="control-btn" onclick="changePage(1)">Weiter →</button>
         </div>
-    </section>
+    </div>
 
-    <section id="gallery">
-        <div class="card">
-            <h1>Unsere Momente</h1>
-            <p>Jedes Moment die ich mit dir zsm verbracht habe hat mei leben unglaublicherweise veerändert und ich bin dank dir happier als sonst und denke nd mehr über sm.</p>
-            <div class="btn-group">
-                <a href="#message" class="btn">Liebesbotschaft lesen</a>
-            </div>
-        </div>
-    </section>
+    <script>
+        // PASSWORT HIER ANPASSEN:
+        const correctPassword = "30.12.2025"; 
 
-    <section id="message">
-        <div class="card">
-            <h1>Danke für Alles Mommy</h1>
-            <p>Danke, dass du immer an meiner Seite bist, mich zum Lachen bringst und mein Leben so viel schöner machst. Du bist etwas ganz Besonderes! Ich liebe dich mehr als der Flächeninhalt unserer Universums, multipliziert mal die Grahams Nummer mommy <3 Du bist die beste Freundin die es jemals existiert hat und existieren wird mommy ❤️</p>
-            <div class="btn-group">
-                <a href="#home" class="btn">Zurück nach oben ↑</a>
-            </div>
-        </div>
-    </section>
-	
-	<script>
-    function checkPassword() {
-        const passwordEntered = document.getElementById("password-input").value;
-        
-        // HIER DEIN WUNSCHPASSWORT EINTRAGEN:
-        const correctPassword = "ichliebedichmommy"; 
+        let currentPage = 0;
+        const totalPages = 10;
 
-        if (passwordEntered === correctPassword) {
-            document.getElementById("login-overlay").style.display = "none";
-        } else {
-            document.getElementById("error-msg").style.display = "block";
+        function checkPassword() {
+            const input = document.getElementById("password-input").value;
+            const errorMsg = document.getElementById("error-msg");
+
+            if (input === correctPassword) {
+                document.getElementById("login-screen").style.display = "none";
+                document.getElementById("main-app").style.display = "flex";
+            } else {
+                errorMsg.style.display = "block";
+            }
         }
-    }
 
-    // Ermöglicht das Bestätigen mit der Enter-Taste
-    document.getElementById("password-input").addEventListener("keypress", function(event) {
-        if (event.key === "Enter") {
-            checkPassword();
+        document.getElementById("password-input").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                checkPassword();
+            }
+        });
+
+        function switchPage(index) {
+            currentPage = index;
+            
+            for (let i = 0; i < totalPages; i++) {
+                document.getElementById(`page-${i}`).classList.remove("active");
+                document.getElementsByClassName("nav-tab")[i].classList.remove("active");
+            }
+
+            document.getElementById(`page-${currentPage}`).classList.add("active");
+            document.getElementsByClassName("nav-tab")[currentPage].classList.add("active");
         }
-    });
-</script>
 
+        function changePage(direction) {
+            let newPage = currentPage + direction;
+            if (newPage >= 0 && newPage < totalPages) {
+                switchPage(newPage);
+            }
+        }
+    </script>
 </body>
 </html>
